@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   checkweather(nameorzip, value) {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?${nameorzip + value}&units=imperial&APPID=1a41a50ea9afa8171ef556a9e33f2fe6`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?${nameorzip + value}&units=imperial&APPID=1a41a50ea9afa8171ef556a9e33f2fe6`)
       .then((response) => {
         response.json()
           .then((json) => {
