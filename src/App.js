@@ -29,23 +29,30 @@ class App extends Component {
   }
 
   checkweather(nameorzip, value) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?${nameorzip + value}&units=imperial&APPID=1a41a50ea9afa8171ef556a9e33f2fe6`)
-      .then((response) => {
-        response.json()
-          .then((json) => {
-            this.setState({
-              mainTemp: json.main.temp,
-              minTemp: json.main.temp_min,
-              maxTemp: json.main.temp_max,
-              containerClass: "newcontainer",
-              headerClass: "newheader",
-              h1Class: "newh1",
-              allTempClass: "displayBlockClass",
-            })
-            this.weatherpic(json);
-          })
-      })
-  }
+  fetch(`https://api.openweathermap.org/data/2.5/weather?${nameorzip + value}&units=imperial&APPID=1a41a50ea9afa8171ef556a9e33f2fe6`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Weather data not available');
+      }
+      return response.json();
+    })
+    .then((json) => {
+      this.setState({
+        mainTemp: json.main.temp,
+        minTemp: json.main.temp_min,
+        maxTemp: json.main.temp_max,
+        containerClass: "newcontainer",
+        headerClass: "newheader",
+        h1Class: "newh1",
+        allTempClass: "displayBlockClass",
+      });
+      this.weatherpic(json);
+    })
+    .catch((error) => {
+      alert('Error fetching weather data: ' + error.message);
+    });
+}
+
 
   weatherpic(json) {
     let backimg = document.querySelector('.backimg');
