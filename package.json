@@ -1,7 +1,7 @@
 {
   "name": "weatherapp",
   "version": "0.1.0",
-  "homepage": "https://musmanraodev.github.io/React-Weather-App",
+  "homepage": "https://bestmusman.github.io/React-Weather-App",
   "private": true,
   "dependencies": {
     "react": "^15.5.4",
